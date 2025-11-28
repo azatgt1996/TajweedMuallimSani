@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Simple Telegram App</title>
+    <title>Tajweed</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
       body {
@@ -15,35 +15,78 @@
       }
 
       .container {
-        max-width: 400px;
+        max-width: 500px;
         margin: 0 auto;
+      }
+      h1 {
         text-align: center;
       }
-
-      button {
-        background: var(--tg-theme-button-color, #2481cc);
-        color: var(--tg-theme-button-text-color, #ffffff);
+      #lesson-select {
         border: none;
-        padding: 12px 24px;
-        border-radius: 10px;
-        font-size: 16px;
-        cursor: pointer;
-        margin: 20px 0;
+        font-size: 26px;
+        outline: none;
+        background-color: #eeeeee;
+        border-radius: 6px;
+        padding: 4px 8px;
+        text-align-last: center;
+        -webkit-appearance: none;
+        -moz-appearance: none;
       }
 
-      .message {
-        margin-top: 20px;
-        padding: 15px;
+      #alphabet {
+        font-family: "Courier New", Courier, monospace;
+      }
+      #alphabet table {
+        border-collapse: collapse;
+        direction: rtl;
+        font-size: 48px;
+        margin: auto;
+      }
+      #alphabet table td {
+        border: 2px solid orangered;
+        padding: 6px;
+        color: red;
+        cursor: pointer;
+      }
+      #alphabet .description {
+        margin-top: 12px;
+        font-family: system-ui;
+      }
+
+      #words {
+        font-size: 34px;
+        font-family: "Courier New", Courier, monospace;
+        text-align: center;
+        line-height: 180%;
+      }
+      #intro {
+        font-size: 44px;
+        font-family: "Courier New", Courier, monospace;
+        text-align: center;
+        background-color: blanchedalmond;
+        padding: 16px 10px;
         border-radius: 10px;
-        background: var(--tg-theme-secondary-bg-color, #f0f0f0);
+      }
+      #intro:empty {
+        display: none;
+      }
+      .red {
+        color: red;
       }
     </style>
   </head>
   <body>
     <div class="container">
-      <h1>Моя Mini App</h1>
-      <button id="helloButton">Поприветствовать</button>
-      <div id="message" class="message" style="display: none"></div>
+      <h1>
+        <span>Урок</span>
+        <select id="lesson-select" onchange="selectLesson(this)"></select>
+      </h1>
+      <div id="alphabet"></div>
+      <div id="lesson">
+        <p id="description"></p>
+        <p id="intro" class="red"></p>
+        <p id="words"></p>
+      </div>
     </div>
 
     <script src="app.js"></script>
