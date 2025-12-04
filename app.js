@@ -32,19 +32,19 @@ function skip(seconds) {
 let hasDescription = localStorage.getItem("hasDescription") !== "false";
 description.style.display = hasDescription ? "block" : "none";
 if (hasDescription) {
-  descriptionBtn.classList.add("red-btn");
+  descriptionBtn.classList.add("red");
 }
 
 function toggleDescription() {
   hasDescription = !hasDescription;
-  descriptionBtn.classList.toggle("red-btn");
+  descriptionBtn.classList.toggle("red");
   localStorage.setItem("hasDescription", hasDescription);
   description.style.display = hasDescription ? "block" : "none";
 }
 
 let hasHint = localStorage.getItem("hasHint") !== "false";
 if (hasHint) {
-  hintBtn.classList.add("red-btn");
+  hintBtn.classList.add("red");
 }
 
 let currentLessonId = localStorage.getItem("curLessonId") ?? "0";
@@ -53,7 +53,7 @@ selectLesson({ value: currentLessonId });
 
 function toggleHint() {
   hasHint = !hasHint;
-  hintBtn.classList.toggle("red-btn");
+  hintBtn.classList.toggle("red");
   localStorage.setItem("hasHint", hasHint);
   selectLesson({ value: currentLessonId });
 }

@@ -1,0 +1,104 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  margin: 0;
+  padding: 20px;
+  /* background: var(--tg-theme-bg-color, #ffffff);
+  color: var(--tg-theme-text-color, #000000); */
+  background: #ffffff;
+  color: #000000;
+
+  --main-color: blanchedalmond;
+  --arabic-font: "Courier New", Courier, monospace;
+}
+
+.container {
+  max-width: 476px;
+  margin: 0 auto;
+}
+h1 {
+  text-align: center;
+  user-select: none;
+}
+p {
+  text-indent: 5%;
+  font-family: system-ui;
+  text-align: justify;
+  user-select: none;
+}
+#lesson-select {
+  border: none;
+  font-size: 26px;
+  outline: none;
+  background-color: #eeeeee;
+  border-radius: 6px;
+  padding: 4px 8px;
+  text-align-last: center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+#alphabet {
+  font-family: var(--arabic-font);
+}
+#alphabet table {
+  border-collapse: collapse;
+  direction: rtl;
+  font-size: x-large;
+  width: calc(100% - 60px);
+  height: 200px;
+  margin: 30px;
+}
+#alphabet table td {
+  border: 2px solid orangered;
+  text-align: center;
+  color: red;
+  cursor: pointer;
+}
+
+#words {
+  font-size: 34px;
+  font-family: var(--arabic-font);
+  text-align: center;
+  line-height: 180%;
+}
+
+audio {
+  width: 100%;
+  height: 24px;
+}
+audio::-webkit-media-controls-panel {
+  background-color: var(--main-color);
+}
+#top-panel button {
+  border: none;
+  background-color: var(--main-color);
+  border-radius: 6px;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+#top-panel button:hover {
+  background-color: rgb(253, 228, 189);
+}
+
+.btn-box {
+  display: flex;
+  gap: 5px;
+}
+#description-btn {
+  margin-left: auto;
+}
+
+#intro {
+  font-size: 44px;
+  font-family: var(--arabic-font);
+  text-align: center;
+  background-color: var(--main-color);
+  padding: 16px 10px;
+  border-radius: 10px;
+}
+#intro:empty {
+  display: none;
+}
+.red {
+  color: red;
+}
