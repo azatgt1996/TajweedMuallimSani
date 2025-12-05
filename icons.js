@@ -28,4 +28,6 @@ const icons = {
         <path stroke="currentColor" stroke-width="2" d="M14.992 16a5.384 5.384 0 0 1-5.984 0" />
       </g>
     </svg>`,
-};
+}
+
+$$('[icon]').forEach((it) => (it.innerHTML = icons[it.attributes.icon.value]))
