@@ -2,9 +2,7 @@ const tg = window.Telegram.WebApp
 
 $('#lesson-select').innerHTML = /*html*/ `
   <option value="0">Алфавит</option>
-  <optgroup label="Буквы">
-    ${lessons.map((it) => /*html*/ `<option value="${it.id}">${it.name}</option>`).join('')}
-  </optgroup>
+  ${lessons.map((it) => /*html*/ `<option value="${it.id}">${it.name}</option>`).join('')}
 `
 
 $('#alphabet').innerHTML = /*html*/ `
@@ -13,7 +11,7 @@ ${alphabetTable}
 
 function skip(seconds) {
   const { duration, currentTime } = $('#lesson-audio')
-  $('#lesson-audio').currentTime = Math.max(0, Math.min(duration || Infinity, currentTime + seconds))
+  $('#lesson-audio').currentTime = Math.max(0, Math.min(duration, currentTime + seconds))
 }
 
 let hasDescription = ls.get('hasDescription') !== 'false'
@@ -30,7 +28,7 @@ function toggleDescription() {
 let hasHint = ls.get('hasHint') !== 'false'
 if (hasHint) $cl('#hint-btn').add('red')
 
-let currentLessonId = ls.get('curLessonId') ?? '0'
+let currentLessonId = ls.get('currentLessonId') ?? '0'
 $('#lesson-select').value = currentLessonId
 selectLesson(currentLessonId)
 
@@ -42,8 +40,8 @@ function toggleHint() {
 }
 
 function selectLesson(value) {
-  ls.set('curLessonId', value)
   currentLessonId = value
+  ls.set('currentLessonId', currentLessonId)
   $toggleVisible('#alphabet', value === '0')
   $toggleVisible('#lesson', value !== '0')
   if (value === '0') return
