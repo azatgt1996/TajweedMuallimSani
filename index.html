@@ -14,20 +14,21 @@
       <div id="lesson">
         <p id="description"></p>
         <div id="top-panel">
-          <audio id="lesson-audio" controls loop></audio>
+          <audio id="lesson-audio" controls loop controlsList="noplaybackrate nodownload"></audio>
           <div class="btn-box">
             <button icon="rewindBack" title="Перемотать назад на 5 с" onclick="skip(-5)"></button>
             <button icon="rewindForward" title="Перемотать вперёд на 5 с" onclick="skip(5)"></button>
+            <button icon="slow" id="slow-btn" title="Замедлить чтение" onclick="slowAudio()"></button>
             <button
               icon="question"
               id="description-btn"
-              title="Скрывает\показывает описание урока"
+              title="Скрыть\показывать описание урока"
               onclick="toggleDescription()"
             ></button>
             <button
               icon="lamp"
               id="hint-btn"
-              title="Показывает подсказки путем окрашивания"
+              title="Показать подсказки путем окрашивания"
               onclick="toggleHint()"
             ></button>
           </div>
