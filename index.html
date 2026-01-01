@@ -19,11 +19,11 @@
         <div id="top-panel">
           <audio id="lesson-audio" controls loop controlsList="noplaybackrate nodownload"></audio>
           <div class="btn-box">
-            <button icon="rewindBack" title="Перемотать назад на 5 с" @click="skip(-5)" />
-            <button icon="rewindForward" title="Перемотать вперёд на 5 с" @click="skip(5)" />
-            <button icon="slow" :class="{active: isAudioSlow}" title="Замедлить чтение" @click="toggleSpeed()" />
-            <button icon="question" :class="{active: hasDescription}" title="Показать описание" @click="toggleDescription()" />
-            <button icon="lamp" :class="{active: hasHint}" title="Показать изучаемую букву" @click="toggleHint()" />
+            <button icon="rewindBack" title="Перемотать назад на 5 с" @click="skip(-5)"></button>
+            <button icon="rewindForward" title="Перемотать вперёд на 5 с" @click="skip(5)"></button>
+            <button icon="slow" :class="{active: isAudioSlow}" title="Замедлить чтение" @click="toggleSpeed()"></button>
+            <button icon="question" :class="{active: hasDescription}" title="Показать описание" @click="toggleDescription()"></button>
+            <button icon="lamp" :class="{active: hasHint}" title="Показать изучаемую букву" @click="toggleHint()"></button>
           </div>
         </div>
         <p id="intro" class="red">{{ lesson.intro }}</p>
