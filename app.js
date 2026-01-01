@@ -60,7 +60,7 @@ function selectLesson(value) {
   if (value === ALPHABET_ID) return
 
   lesson = lessons.find((it) => it.id === +value)
-  $('#lesson-audio').src = `audio_files/lesson${lesson.id}.mp3`
+  $('#lesson-audio').src = `audio_files/Буква ${lesson.letter}.mp3`
   $('#description').innerHTML = lesson.description
   $('#intro').innerHTML = lesson.intro
   setPlaybackRate()
