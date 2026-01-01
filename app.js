@@ -6,12 +6,12 @@ $('#lesson-select').innerHTML = lessons
 
 $('#alphabet').innerHTML = alphabetContent
 
-function skip(seconds) {
-  const { duration, currentTime } = $('#lesson-audio')
-  $('#lesson-audio').currentTime = Math.max(0, Math.min(duration, currentTime + seconds))
+let isAudioSlow = ls.get('isAudioSlow') === 'true'
+if (isAudioSlow) $cl('#slow-btn').add('active')
+const setPlaybackRate = () => {
+  $('#lesson-audio').playbackRate = isAudioSlow ? 0.7 : 1
 }
-
-const setPlaybackRate = () => ($('#lesson-audio').playbackRate = isAudioSlow ? 0.7 : 1)
+setPlaybackRate()
 
 function slowAudio() {
   isAudioSlow = !isAudioSlow
@@ -20,9 +20,10 @@ function slowAudio() {
   setPlaybackRate()
 }
 
-let isAudioSlow = ls.get('isAudioSlow') === 'true'
-if (isAudioSlow) $cl('#slow-btn').add('active')
-setPlaybackRate()
+function skip(seconds) {
+  const { duration, currentTime } = $('#lesson-audio')
+  $('#lesson-audio').currentTime = Math.max(0, Math.min(duration, currentTime + seconds))
+}
 
 let hasDescription = ls.get('hasDescription') !== 'false'
 $toggleVisible('#description', hasDescription)
@@ -38,17 +39,17 @@ function toggleDescription() {
 let hasHint = ls.get('hasHint') !== 'false'
 if (hasHint) $cl('#hint-btn').add('active')
 
-let lesson = null
-let currentLessonId = ls.get('currentLessonId') ?? ALPHABET_ID
-$('#lesson-select').value = currentLessonId
-selectLesson(currentLessonId)
-
 function toggleHint() {
   hasHint = !hasHint
   $cl('#hint-btn').toggle('active')
   ls.set('hasHint', hasHint)
   setLessonWords()
 }
+
+let lesson = null
+let currentLessonId = ls.get('currentLessonId') ?? ALPHABET_ID
+$('#lesson-select').value = currentLessonId
+selectLesson(currentLessonId)
 
 function selectLesson(value) {
   currentLessonId = value

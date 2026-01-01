@@ -19,18 +19,8 @@
             <button icon="rewindBack" title="Перемотать назад на 5 с" onclick="skip(-5)"></button>
             <button icon="rewindForward" title="Перемотать вперёд на 5 с" onclick="skip(5)"></button>
             <button icon="slow" id="slow-btn" title="Замедлить чтение" onclick="slowAudio()"></button>
-            <button
-              icon="question"
-              id="description-btn"
-              title="Скрыть\показывать описание урока"
-              onclick="toggleDescription()"
-            ></button>
-            <button
-              icon="lamp"
-              id="hint-btn"
-              title="Показать подсказки путем окрашивания"
-              onclick="toggleHint()"
-            ></button>
+            <button icon="question" id="description-btn" title="Показать описание" onclick="toggleDescription()"></button>
+            <button icon="lamp" id="hint-btn" title="Показать изучаемую букву" onclick="toggleHint()"></button>
           </div>
         </div>
         <p id="intro" class="red"></p>
