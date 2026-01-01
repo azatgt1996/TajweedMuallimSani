@@ -5,26 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tajweed</title>
     <script src="telegram-web-app.js"></script>
+    <script src="petite-vue.iife.js" defer init></script>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div class="container">
-      <select id="lesson-select" onchange="selectLesson(this.value)"></select>
-      <div id="alphabet"></div>
-      <div id="lesson">
-        <p id="description"></p>
+    <div v-scope="app" @vue:mounted="mounted" class="container">
+      <select id="lesson-select" v-model="currentLessonId" @change="setLesson()">
+        <option v-for="it in lessons" :value="it.id">{{ it.id }}. {{ it.name }}</option>
+      </select>
+      <div v-if="currentLessonId === '1'" id="alphabet" v-html="alphabetContent"></div>
+      <div v-else id="lesson">
+        <p v-if="hasDescription" id="description">{{ lesson.description }}</p>
         <div id="top-panel">
           <audio id="lesson-audio" controls loop controlsList="noplaybackrate nodownload"></audio>
           <div class="btn-box">
-            <button icon="rewindBack" title="Перемотать назад на 5 с" onclick="skip(-5)"></button>
-            <button icon="rewindForward" title="Перемотать вперёд на 5 с" onclick="skip(5)"></button>
-            <button icon="slow" id="slow-btn" title="Замедлить чтение" onclick="slowAudio()"></button>
-            <button icon="question" id="description-btn" title="Показать описание" onclick="toggleDescription()"></button>
-            <button icon="lamp" id="hint-btn" title="Показать изучаемую букву" onclick="toggleHint()"></button>
+            <button icon="rewindBack" title="Перемотать назад на 5 с" @click="skip(-5)" />
+            <button icon="rewindForward" title="Перемотать вперёд на 5 с" @click="skip(5)" />
+            <button icon="slow" :class="{active: isAudioSlow}" title="Замедлить чтение" @click="toggleSpeed()" />
+            <button icon="question" :class="{active: hasDescription}" title="Показать описание" @click="toggleDescription()" />
+            <button icon="lamp" :class="{active: hasHint}" title="Показать изучаемую букву" @click="toggleHint()" />
           </div>
         </div>
-        <p id="intro" class="red"></p>
-        <p id="words"></p>
+        <p id="intro" class="red">{{ lesson.intro }}</p>
+        <p id="words" v-html="words"></p>
       </div>
     </div>
 

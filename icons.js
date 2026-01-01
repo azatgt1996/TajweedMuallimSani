@@ -36,4 +36,4 @@ const icons = {
     </svg>
   `,
 }
-$$('[icon]').forEach((it) => (it.innerHTML = icons[it.attributes.icon.value]))
+document.querySelectorAll('[icon]').forEach((it) => (it.innerHTML = icons[it.attributes.icon.value]))
