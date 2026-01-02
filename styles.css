@@ -16,6 +16,10 @@ body {
   --arabic-font: ArabicFont;
 }
 
+[v-cloak] {
+  display: none;
+}
+
 .container {
   max-width: 476px;
   margin: 0 auto;

@@ -14,11 +14,11 @@ const app = {
     this.setPlaybackRate()
   },
   skip(seconds) {
-    const { duration, currentTime } = $('#lesson-audio')
-    $('#lesson-audio').currentTime = Math.max(0, Math.min(duration, currentTime + seconds))
+    const { duration, currentTime } = this.$refs.lessonAudio
+    this.$refs.lessonAudio.currentTime = Math.max(0, Math.min(duration, currentTime + seconds))
   },
   setPlaybackRate() {
-    $('#lesson-audio').playbackRate = this.isAudioSlow ? 0.7 : 1
+    this.$refs.lessonAudio.playbackRate = this.isAudioSlow ? 0.7 : 1
   },
   toggleDescription() {
     ls.set('hasDescription', (this.hasDescription = !this.hasDescription))
@@ -32,7 +32,7 @@ const app = {
     if (this.currentLessonId === '1') return
 
     this.lesson = lessons.find((it) => it.id === this.currentLessonId)
-    $('#lesson-audio').src = `audio_files/Буква ${this.lesson.letter}.mp3`
+    this.$refs.lessonAudio.src = `audio_files/Буква ${this.lesson.letter}.mp3`
     this.setPlaybackRate()
     this.setLessonWords()
   },

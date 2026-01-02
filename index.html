@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div v-scope="app" @vue:mounted="mounted" class="container">
+    <div v-scope="app" v-cloak @vue:mounted="mounted" class="container">
       <select id="lesson-select" v-model="currentLessonId" @change="setLesson()">
         <option v-for="it in lessons" :value="it.id">{{ it.id }}. {{ it.name }}</option>
       </select>
@@ -17,7 +17,7 @@
       <div v-else id="lesson">
         <p v-if="hasDescription" id="description">{{ lesson.description }}</p>
         <div id="top-panel">
-          <audio id="lesson-audio" controls loop controlsList="noplaybackrate nodownload"></audio>
+          <audio id="lesson-audio" ref="lessonAudio" controls loop controlsList="noplaybackrate nodownload"></audio>
           <div class="btn-box">
             <button icon="rewindBack" title="Перемотать назад на 5 с" @click="skip(-5)"></button>
             <button icon="rewindForward" title="Перемотать вперёд на 5 с" @click="skip(5)"></button>
